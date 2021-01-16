@@ -63,7 +63,7 @@ need to change the code directly. The way the test are configured right now is n
 Note: if you change some of the queue capacities you need to make sure that the queues can store big enough values
 and store enough entries otherwise the tests will fail.
 
-### LIST OF TEST:
+### List of Tests:
 - **test_mixed_operators:** Multiple threads enqueue and dequeue elements and we check if
   the queue actually returns an element.
 
