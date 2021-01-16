@@ -31,7 +31,7 @@ Note: if the queue cannot deal with enqueuing a value to a full queue (in this c
 so do not set the prefill percentage to high.  
 
 - **Benchmark for different spin numbers**
-Can be run exactly with the same parameters as "BENCHMARKING PROGRAM".
+Can be run exactly with the same parameters as "Benchmarkign program".
 Executes the specified operations with varying numbers of "spin" numbers (loop repititions
 that a dequeuer waits for if it arrives before an entry is stored).
 
