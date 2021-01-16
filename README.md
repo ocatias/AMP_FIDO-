@@ -1,4 +1,4 @@
-# AM PFIFO Q
+# AMP FIFO Q
 
 This is an implementation and evaluation of ["A Scalable, Portable, and Memory-Efficient Lock-Free FIFO Queue"](https://arxiv.org/abs/1908.04511) by Ruslan Nikolaev. This project was done for the "Advanced Multiprocessor Programing" course at TU Wien. The report can be read [here](https://github.com/ocatias/AMP_FIFO_Q/blob/master/Report/report.pdf).
 
@@ -20,7 +20,7 @@ then here are all the commands to compile the separate programs:
 
 - **Testing all elements:** g++-8 test_all_elements.cc barrier.h Node.h scq.h scp.h bllock1.h bllock2.h -pthread -std=c++17 -latomic -O3
 
-## Explanations
+## Benchmarks
 I will briefly explain what all of the built benchmarks do:
 - **Benchmarking program** is what I used to create the benchmarks of the throughput.
 To run it compile and call: ./a.out type a b
@@ -45,6 +45,18 @@ All of the benchmarks save their result in the "Results" folder. Note that they 
 This is why my final results are stored in "Eval/Results". To make the graphs use gnuplot and load the corresponding scripts:
 i.e. call "gnuplot" and then "load plot_diss.p" (and then restart gnuplot and call another script), the pictures will then be in the "Picture" folder.
 
+### Replicating the Benchmarks
+These are all of the main throughput benchmarks (take a look at the report for more details):
+- ./bench.out enqdeq 0 0
+- ./bench.out pairs 0 0
+- ./bench.out pairs 0 0.9
+- ./bench.out enqdeq 0.5 0
+- ./bench.out enqdeq 0.5 0.9
+- ./bench.out enqdeq 0.01 0
+- ./bench.out enqdeq 0.3 0
+- ./bench.out enqdeq 0.3 0.9
+
+
 ## Tests
 All of the tests can be just run without any parameters. If one wants to test other properties then they
 need to change the code directly. The way the test are configured right now is not the only way I tested the queues.
@@ -66,14 +78,3 @@ and store enough entries otherwise the tests will fail.
 - **Cyclic_remapping.ipynb:**
   Is the code used to test whether the cyclic remapping function actually returns valid incdices.
   This code can be run by an up to date version of the "Jupyter Notebook".
-
-## Replicating the Benchmarks
-These are all of the main throughput benchmarks (take a look at the report for more details):
-- ./bench.out enqdeq 0 0
-- ./bench.out pairs 0 0
-- ./bench.out pairs 0 0.9
-- ./bench.out enqdeq 0.5 0
-- ./bench.out enqdeq 0.5 0.9
-- ./bench.out enqdeq 0.01 0
-- ./bench.out enqdeq 0.3 0
-- ./bench.out enqdeq 0.3 0.9
