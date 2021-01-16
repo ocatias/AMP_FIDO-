@@ -22,13 +22,13 @@ then here are all the commands to compile the separate programs:
 
 ## Benchmarks
 I will briefly explain what all of the built benchmarks do:
-- **Benchmarking program** is what I used to create the benchmarks of the throughput.
-To run it compile and call: ./a.out type a b
-type: of operations either "pairs" or "enqdeq"
-a: enqueue probability (float from 0 to 1, gets ignored if the type is "pairs")
-b: prefill percentage (float from 0 to 2 where 0 is nothing prefilled and 2 is 100% of the queue prefilled)
+- **Benchmarking program** is what I used to create the benchmarks of the throughput.  
+To run it compile and call: ./a.out type a b  
+type: of operations either "pairs" or "enqdeq"  
+a: enqueue probability (float from 0 to 1, gets ignored if the type is "pairs")  
+b: prefill percentage (float from 0 to 2 where 0 is nothing prefilled and 2 is 100% of the queue prefilled)  
 Note: if the queue cannot deal with enqueuing a value to a full queue (in this case it will spin until it can enqueue the value)
-so do not set the prefill percentage to high.
+so do not set the prefill percentage to high.  
 
 - **Benchmark for different spin numbers**
 Can be run exactly with the same parameters as "BENCHMARKING PROGRAM".
@@ -36,9 +36,9 @@ Executes the specified operations with varying numbers of "spin" numbers (loop r
 that a dequeuer waits for if it arrives before an entry is stored).
 
 - **Benchmark the inner workings of scq**
-To run compile it and call: ./a.out type a
-type: of operations either "pairs" or "enqdeq"
-a: prefill percentage (float from 0 to 2 where 0 is nothing prefilled and 2 is 100% of the queue prefilled)
+To run compile it and call: ./a.out type a  
+type: of operations either "pairs" or "enqdeq"  
+a: prefill percentage (float from 0 to 2 where 0 is nothing prefilled and 2 is 100% of the queue prefilled)  
 (If you want to use other enqueue/dequeue probabilities then this needs to be changed in the "probabilities" array in the bench_diss.cc code)
 
 All of the benchmarks save their result in the "Results" folder. Note that they override files of the same experiment.
