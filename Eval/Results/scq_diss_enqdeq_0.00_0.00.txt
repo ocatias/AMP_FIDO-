@@ -1,0 +1,9 @@
+Threads, Enq_loops, Enq_CAS_fails, ENQ_unSafe, Deq_loops, Deq_old_element, Deq_CAS_fail, Deq_catchup_calls
+1, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+2, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+4, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+8, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+16, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+32, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+64, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0
+128, -nan, -nan, -nan, 0, 0, 0, 0, -nan, -nan, -nan, 0, 0, 0, 0

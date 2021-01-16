@@ -1,0 +1,99 @@
+g++-8 bench.cc barrier.h Stats.h Node.h scq.h scp.h bllock1.h bllock2.h rnd.h -pthread -std=c++17 -latomic -O3
+
+g++-8 bench_looptune.cc barrier.h Stats.h Node.h scq_looptune.h rnd.h -pthread -std=c++17 -latomic -O3
+
+
+g++-8 test.cc barrier.h Node.h scq.h scp.h bllock1.h bllock2.h -pthread -std=c++17 -latomic -O3
+g++-8 test_enqueue_dequeue_order.cc barrier.h Node.h scq.h scp.h  bllock1.h bllock2.h -pthread -std=c++17 -latomic -O3
+g++-8 test_mixed_operators.cc barrier.h Node.h scq.h scp.h bllock1.h bllock2.h -pthread -std=c++17 -latomic -O3
+g++-8 test_all_elements.cc barrier.h Node.h scq.h scp.h bllock1.h bllock2.h -pthread -std=c++17 -latomic -O3
+
+SCQ DISSECTION
+g++-8 test.cc scq_bench.h -pthread -std=c++17 -latomic -O3
+g++-8  bench_diss.cc barrier.h Stats.h scq_bench.h rnd.h -pthread -std=c++17 -latomic -O3
+
+
+
+GNUPLOT
+
+EMPTY DEQUEUE
+set key autotitle columnhead
+set xrange[1:144]
+set xtics (1,2,4,8,16,32,64,128)
+set logscale x 2
+set yrange[0:2000]
+set xlabel 'Threads'
+set ylabel 'Mops/sec'
+set datafile separator comma
+plot for [col=2:5] 'enqdeq_0.00_0.00.txt' using 1:col with linespoints
+
+ENQUEUE DEQUEUE PAIRS
+set key autotitle columnhead
+set xrange[1:144]
+set xtics (1,2,4,8,18,36,72,144)
+set logscale x 2
+set yrange[0:100]
+set xlabel 'Threads'
+set ylabel 'Mops/sec'
+set datafile separator comma
+plot for [col=2:5] 'bench_enqdeqpairs.txt' using 1:col with linespoints
+
+SCQ_DISS
+
+set key autotitle columnhead
+set xrange[0.5:129]
+set xtics (1,2,4,8, 16, 32, 64, 128)
+set logscale x 2
+set yrange[0.5:3.5]
+set xlabel 'Threads'
+set ylabel 'Relative Counts'
+set datafile separator comma
+plot 'scq_diss.txt' using 1:3 every 2 title 'Enq\_loops 0.3'  with linespoints,\
+  'scq_diss.txt' using 1:3 every 2::1 title 'Enq\_loops 0.5'  with linespoints,\
+  'scq_diss.txt' using 1:6 every 2 title 'Deq\_loops 0.3'  with linespoints,\
+  'scq_diss.txt' using 1:6 every 2::1 title 'Deq\_loops 0.5'  with linespoints
+
+
+SCQ_DISS CASFAILS
+set key autotitle columnhead
+set xrange[0.5:129]
+set xtics (1,2,4,8, 16, 32, 64, 128)
+set logscale x 2
+set yrange[0:0.5]
+set xlabel 'Threads'
+set ylabel 'Relative Counts'
+set datafile separator comma
+plot 'scq_diss_0.50.txt' using 1:4 every 2 title 'Enq CAS\_fails 0.3'  with linespoints,\
+  'scq_diss_0.50.txt' using 1:4 every 2::1 title 'Enq CAS\_fails 0.5'  with linespoints,\
+  'scq_diss_0.50.txt' using 1:8 every 2 title 'Deq CAS\_fails 0.3'  with linespoints,\
+  'scq_diss_0.50.txt' using 1:8 every 2::1 title 'Deq CAS\_fails 0.5'  with linespoints
+
+
+set key autotitle columnhead
+set xrange[0.5:129]
+set xtics (1,2,4,8, 16, 32, 64, 128)
+set logscale x 2
+set yrange[0:0.5]
+set xlabel 'Threads'
+set ylabel 'Relative Counts'
+set datafile separator comma
+plot 'scq_diss_0.90.txt' using 1:4 every 2 title 'Enq CAS\_fails 0.3'  with linespoints,\
+  'scq_diss_0.90.txt' using 1:4 every 2::1 title 'Enq CAS\_fails 0.5'  with linespoints,\
+  'scq_diss_0.90.txt' using 1:8 every 2 title 'Deq CAS\_fails 0.3'  with linespoints,\
+  'scq_diss_0.90.txt' using 1:8 every 2::1 title 'Deq CAS\_fails 0.5'  with linespoints
+
+SCQ REST: ENQ_UNSAFE, DEQ_CATCHUPCALL, DEQ_OLD_ELEMENT
+set key autotitle columnhead
+set xrange[0.5:129]
+set xtics (1,2,4,8, 16, 32, 64, 128)
+set logscale x 2
+set yrange[0:5]
+set xlabel 'Threads'
+set ylabel 'Relative Counts'
+set datafile separator comma
+plot 'scq_diss.txt' using 1:7 every 2 title 'Deq old element 0.3'  with linespoints,\
+  'scq_diss.txt' using 1:7 every 2::1 title 'Deq old element 0.5'  with linespoints,\
+  'scq_diss.txt' using 1:5 every 2 title 'Enq unsafe 0.3'  with linespoints,\
+  'scq_diss.txt' using 1:5 every 2::1 title 'Enq unsafe 0.5'  with linespoints,\
+  'scq_diss.txt' using 1:9 every 2 title 'Deq catchups 0.3'  with linespoints,\
+  'scq_diss.txt' using 1:9 every 2::1 title 'Deq catchups 0.5'  with linespoints
