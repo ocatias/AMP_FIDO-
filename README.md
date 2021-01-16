@@ -4,6 +4,9 @@ This is an implementation and evaluation of ["A Scalable, Portable, and Memory-E
 
 
 
+<img src="Report/Pictures/tp_30enq_90.png" alt="Benchmark: 30% enqueue / 70% dequeue on a 90% prefilled queue" width="400">  <img src="Report/Pictures/tp_pairs_empty.png" alt="Benchmark: enqueue-dequeue pairs on an empty queue" width="400">
+<img src="Report/Pictures/tp_deq_empty.png" alt="Benchmark: dequeue operations on an empty queue" width="400"> <img src="Report/Pictures/diss_deq_cas.png" alt="Anaysis of CAS fails in dequeue operations" width="400">
+
 ## Building the Code
 To build all the programs calling the **makefile** should be enough. If this for some reason does not work
 then here are all the commands to compile the separate programs:
